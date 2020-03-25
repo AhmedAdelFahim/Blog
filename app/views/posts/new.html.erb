@@ -1,0 +1,10 @@
+<%= form_tag(posts_url, method: 'post') do %>
+
+  <%= text_field_tag(:title,"", placeholder: "Title") %>
+  <br>
+  <br>
+  <%= text_area_tag(:content,"", rows: "3", placeholder: "Content") %>
+  <br>
+  <br>
+  <%= submit_tag("Add New",class: "btn btn-success") %>
+<% end %>
