@@ -1,10 +1,12 @@
-<%= form_tag(posts_url, method: 'post') do %>
+<%#= form_tag(posts_url, method: 'post') do %>
 
-  <%= text_field_tag(:title,"", placeholder: "Title") %>
-  <br>
-  <br>
-  <%= text_area_tag(:content,"", rows: "3", placeholder: "Content") %>
-  <br>
-  <br>
-  <%= submit_tag("Add New",class: "btn btn-success") %>
-<% end %>
+  <%#= text_field_tag(:title,"", placeholder: "Title") %>
+<!--  <br>-->
+<!--  <br>-->
+  <%#= text_area_tag(:content,"", rows: "3", placeholder: "Content") %>
+<!--  <br>-->
+<!--  <br>-->
+  <%#= submit_tag("Add New",class: "btn btn-success") %>
+<%# end %>
+
+<%= render partial: 'form', locals: { btn_text: "Add New Post", btn_class: "success"} %>

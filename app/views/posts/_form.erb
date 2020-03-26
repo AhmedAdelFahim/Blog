@@ -1,0 +1,19 @@
+<% if @post.errors.any? %>
+
+<div class="alert alert-danger">
+  <% @post.errors.full_messages.each do |msg| %>
+    <h3><%= msg %></h3>
+  <% end %>
+
+</div>
+<% end %>
+<%= form_for(@post , url: posts_path(@post)) do |f| %>
+  <%= f.text_field :title , placeholder: "Title" %>
+  <br>
+  <br>
+  <%= f.text_area :content, rows: "3", placeholder: "Content" %>
+  <br>
+<!--  <br>-->
+  <%#= f.submit "Create" %>
+  <%= submit_tag(btn_text,class: "btn btn-#{btn_class}") %>
+<% end %>

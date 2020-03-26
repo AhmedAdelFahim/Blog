@@ -1,2 +1,14 @@
-<h1>Posts#index</h1>
-<p>Find me in app/views/posts/index.html.erb</p>
+<% @posts.each do |post| %>
+  <div class="card">
+    <div class="card-body">
+      <h5 class="card-title"><%= post.title %></h5>
+      <p class="card-text"><%= post.content %></p>
+      <p class="card-text"><%= post.updated_at %></p>
+      <%= link_to 'Show', posts_path(post), method: :get, class: "btn btn-info" %>
+      <a href="<%= edit_posts_path(post) %>" class="btn btn-primary">UPDATE</a>
+      <%= link_to 'delete', posts_path(post), method: :delete, class: "btn btn-danger" %>
+
+    </div>
+  </div>
+  <br>
+<% end %>

@@ -1,2 +1,36 @@
-<h1>Posts#show</h1>
-<p>Find me in app/views/posts/show.html.erb</p>
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title"><%= @post.title %></h5>
+    <p class="card-text"><%= @post.content %></p>
+    <p class="card-text"><%= @post.updated_at %></p>
+    <% if params[:error] %>
+
+      <div class="alert alert-danger">
+        <%# flash.each do |name, msg| %>
+          <h3><%= params[:error] %></h3>
+        <%# end %>
+
+      </div>
+    <% end %>
+    <%= form_tag(comments_url(@post.id), method: 'post') do %>
+      <%= text_area_tag(:comment, "", rows: "3", placeholder: "Content") %>
+      <br>
+      <br>
+      <%= submit_tag("Comment", class: "btn btn-success") %>
+    <% end %>
+    <% @comments.each do |comment| %>
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title"><%= comment.comment %></h5>
+         <!-- <p class="card-text"><%#= post.content %></p>
+          <%#= link_to 'Show', posts_path(post), method: :get, class: "btn btn-info" %>
+          <a href="<%#= edit_posts_path(post) %>" class="btn btn-primary">UPDATE</a>-->
+          <%= link_to 'delete', comments_path(comment,post_id: @post.id ), method: :delete, class: "btn btn-danger" %>
+
+        </div>
+      </div>
+      <br>
+    <% end %>
+  </div>
+</div>
+<br>
